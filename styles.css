@@ -168,28 +168,28 @@ p { line-height: 1.7; }
 
 /* functional-enhancement-start */
 .function-lab {
-  width: min(1280px, calc(100% - 48px));
-  margin: 0 auto 42px;
-  padding: 22px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: rgba(255,255,255,.92);
-  box-shadow: var(--shadow);
+  width: 100%;
+  margin: 20px 0 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
 }
 .layout-care .function-lab, .layout-game .function-lab {
-  background: rgba(255,255,255,.08);
   color: #f8fafc;
-  border-color: rgba(255,255,255,.14);
-  box-shadow: none;
 }
 .function-lab-head {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: 16px;
+  padding-bottom: 12px;
   margin-bottom: 16px;
+  border-bottom: 1px solid var(--line);
 }
-.feature-grid { display: grid; grid-template-columns: 360px 1fr; gap: 16px; align-items: start; }
+.layout-care .function-lab-head, .layout-game .function-lab-head { border-color: rgba(255,255,255,.14); }
+.feature-grid { display: grid; grid-template-columns: minmax(280px, 360px) minmax(0, 1fr); gap: 16px; align-items: start; }
 .feature-stack { display: grid; gap: 12px; }
 .feature-form, .feature-output, .feature-card {
   border: 1px solid var(--line);
@@ -244,6 +244,11 @@ p { line-height: 1.7; }
   padding: 12px;
   background: color-mix(in srgb, var(--accent) 9%, white);
 }
+.layout-care .feature-kpi, .layout-game .feature-kpi {
+  color: #f8fafc;
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.14);
+}
 .feature-kpi strong { display: block; font-size: 28px; }
 .feature-chat { display: grid; gap: 10px; max-height: 260px; overflow: auto; }
 .feature-chat .me { justify-self: end; background: color-mix(in srgb, var(--accent) 16%, white); }
@@ -268,8 +273,12 @@ p { line-height: 1.7; }
   color: var(--accent2);
   font-weight: 900;
 }
+.layout-care .feature-badge, .layout-game .feature-badge {
+  color: #ecfeff;
+  background: rgba(255,255,255,.12);
+}
 @media (max-width: 860px) {
-  .function-lab { width: calc(100% - 36px); padding: 16px; }
+  .function-lab { width: 100%; }
   .function-lab-head, .feature-grid { grid-template-columns: 1fr; display: grid; }
   .feature-kpis, .feature-table-row { grid-template-columns: 1fr; }
 }

@@ -198,19 +198,22 @@ function showNotice(action) {
   const notice = document.getElementById("notice");
   if (!notice) return;
   const map = {
-    demo: "已切換為全權限公開展示，所有流程皆可瀏覽。",
-    deploy: "已模擬批次開通課程資源。",
-    audit: "已模擬完成課後統一診斷。",
-    start: "已模擬開始低衝擊訓練。",
+    operate: "操作中心已就緒，所有作業皆可處理。",
+    deploy: "課程資源批次已建立。",
+    audit: "課後統一診斷已完成。",
+    start: "低衝擊訓練已開始。",
     pain: "已記錄疼痛回饋並降低今日強度。"
   };
-  notice.textContent = map[action] || "已完成模擬操作。";
+  notice.textContent = map[action] || "作業已完成。";
 }
 
 document.querySelectorAll("[data-action]").forEach((button) => {
   button.addEventListener("click", () => {
     pulse += 10;
     showNotice(button.dataset.action);
+    if (button.dataset.action === "operate") {
+      document.getElementById("functionLab")?.scrollIntoView({ block: "start", behavior: "smooth" });
+    }
     draw();
   });
 });
@@ -279,7 +282,7 @@ draw();
   }
 
   function renderConsulting() {
-    return '<div class="feature-grid"><section class="feature-form"><h3>問卷文字 AI 分析</h3><label>回饋內容<textarea id="consultText">老師講解清楚，但實作時間不足，希望增加案例與課後練習。</textarea></label><label>Prompt 模板<textarea id="consultPrompt">' + escapeHtml(state.template) + '</textarea></label><div class="feature-row">' + button("consult-analyze", "執行 TF-IDF + 語意分類") + button("consult-template", "儲存模板", "secondary") + button("consult-export", "輸出摘要", "ghost") + '</div></section><section class="feature-output">' + kpis([["分析專案", state.analyses.length, "已保存"], ["Prompt", "1", "可調整"], ["輸出", "Word/Excel", "模擬"]]) + '<div class="feature-table">' + state.analyses.map((a) => '<div class="feature-table-row"><strong>' + escapeHtml(a.title) + '</strong><span class="feature-badge">' + escapeHtml(a.tag) + '</span><small>風險：' + escapeHtml(a.risk) + '</small></div>').join("") + '</div></section></div>';
+    return '<div class="feature-grid"><section class="feature-form"><h3>問卷文字 AI 分析</h3><label>回饋內容<textarea id="consultText">老師講解清楚，但實作時間不足，希望增加案例與課後練習。</textarea></label><label>Prompt 模板<textarea id="consultPrompt">' + escapeHtml(state.template) + '</textarea></label><div class="feature-row">' + button("consult-analyze", "執行 TF-IDF + 語意分類") + button("consult-template", "儲存模板", "secondary") + button("consult-export", "輸出摘要", "ghost") + '</div></section><section class="feature-output">' + kpis([["分析專案", state.analyses.length, "已保存"], ["Prompt", "1", "可調整"], ["輸出", "Word/Excel", "可匯出"]]) + '<div class="feature-table">' + state.analyses.map((a) => '<div class="feature-table-row"><strong>' + escapeHtml(a.title) + '</strong><span class="feature-badge">' + escapeHtml(a.tag) + '</span><small>風險：' + escapeHtml(a.risk) + '</small></div>').join("") + '</div></section></div>';
   }
 
   function renderMood() {
@@ -287,7 +290,7 @@ draw();
   }
 
   function renderImpact() {
-    return '<div class="feature-grid"><section class="feature-form"><h3>補助企劃生成</h3><label>補助案<select id="impactGrant"><option>長照據點補助</option><option>偏鄉兒少陪伴</option><option>食物銀行設備</option><option>企業 CSR 合作</option></select></label><label>服務構想<textarea id="impactIdea">協助偏鄉長者每週共餐、健康關懷與交通接送。</textarea></label><div class="feature-row">' + button("impact-generate", "生成企劃草稿") + button("impact-donation", "新增捐款", "secondary") + button("impact-citation", "補上法規引用", "ghost") + '</div></section><section class="feature-output">' + kpis([["企劃草稿", state.proposals.length, "份"], ["捐款金額", "$" + state.donations, "模擬"], ["RAG 引用", state.citations, "條"]]) + '<div class="feature-list">' + state.proposals.map((p) => item(p.grant + " / " + p.title, "狀態：" + p.status + "，含目標、預算、KPI 與官方依據")).join("") + '</div></section></div>';
+    return '<div class="feature-grid"><section class="feature-form"><h3>補助企劃生成</h3><label>補助案<select id="impactGrant"><option>長照據點補助</option><option>偏鄉兒少陪伴</option><option>食物銀行設備</option><option>企業 CSR 合作</option></select></label><label>服務構想<textarea id="impactIdea">協助偏鄉長者每週共餐、健康關懷與交通接送。</textarea></label><div class="feature-row">' + button("impact-generate", "生成企劃草稿") + button("impact-donation", "新增捐款", "secondary") + button("impact-citation", "補上法規引用", "ghost") + '</div></section><section class="feature-output">' + kpis([["企劃草稿", state.proposals.length, "份"], ["捐款金額", "$" + state.donations, "已累計"], ["RAG 引用", state.citations, "條"]]) + '<div class="feature-list">' + state.proposals.map((p) => item(p.grant + " / " + p.title, "狀態：" + p.status + "，含目標、預算、KPI 與官方依據")).join("") + '</div></section></div>';
   }
 
   function renderCare() {
@@ -307,7 +310,7 @@ draw();
   }
 
   function renderGame() {
-    return '<div class="feature-grid"><section class="feature-form"><h3>戰鬥系統可玩模擬</h3><label>戰鬥姿態<select id="gameStyle"><option>穩健格擋</option><option>高風險連擊</option><option>翻滾迂迴</option></select></label><label>敵人難度<select id="gameDifficulty"><option>一般</option><option>精英</option><option>Boss</option></select></label><div class="feature-row">' + button("game-attack", "攻擊") + button("game-block", "格擋", "secondary") + button("game-roll", "翻滾", "ghost") + button("game-heal", "回血", "ghost") + button("game-save", "存檔", "secondary") + '</div></section><section class="feature-output">' + kpis([["玩家 HP", state.hp + "%", "HUD"], ["體力", state.stamina + "%", "動作消耗"], ["敵人", state.enemyState, state.enemy + "%"]]) + '<div class="feature-list">' + state.log.map((l) => item("戰鬥紀錄", l)).join("") + '</div></section></div>';
+    return '<div class="feature-grid"><section class="feature-form"><h3>戰鬥系統操作台</h3><label>戰鬥姿態<select id="gameStyle"><option>穩健格擋</option><option>高風險連擊</option><option>翻滾迂迴</option></select></label><label>敵人難度<select id="gameDifficulty"><option>一般</option><option>精英</option><option>Boss</option></select></label><div class="feature-row">' + button("game-attack", "攻擊") + button("game-block", "格擋", "secondary") + button("game-roll", "翻滾", "ghost") + button("game-heal", "回血", "ghost") + button("game-save", "存檔", "secondary") + '</div></section><section class="feature-output">' + kpis([["玩家 HP", state.hp + "%", "HUD"], ["體力", state.stamina + "%", "動作消耗"], ["敵人", state.enemyState, state.enemy + "%"]]) + '<div class="feature-list">' + state.log.map((l) => item("戰鬥紀錄", l)).join("") + '</div></section></div>';
   }
 
   function render() {
