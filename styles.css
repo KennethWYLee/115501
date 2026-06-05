@@ -277,9 +277,31 @@ p { line-height: 1.7; }
   color: #ecfeff;
   background: rgba(255,255,255,.12);
 }
+.feature-mini-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.feature-trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.feature-scene {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.62));
+  padding: 14px;
+}
+.layout-care .feature-scene, .layout-game .feature-scene {
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.14);
+}
+.feature-progress { height: 10px; border-radius: 8px; background: rgba(100,116,139,.18); overflow: hidden; margin-top: 8px; }
+.feature-progress span { display: block; height: 100%; width: var(--value); background: var(--accent); }
+.feature-pill { display: inline-flex; align-items: center; min-height: 28px; padding: 0 9px; border-radius: 8px; background: color-mix(in srgb, var(--accent) 10%, white); color: var(--accent); font-weight: 900; }
+.feature-qr { width: 92px; aspect-ratio: 1; border-radius: 8px; background: repeating-linear-gradient(45deg, #111827 0 8px, #fff 8px 16px); border: 8px solid #fff; box-shadow: inset 0 0 0 2px var(--line); }
+.pose-stage { min-height: 220px; display: grid; place-items: center; position: relative; }
+.pose-stage svg { width: min(230px, 100%); height: auto; }
+.calendar-lite { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.calendar-lite span { min-height: 32px; border-radius: 8px; display: grid; place-items: center; border: 1px solid var(--line); background: rgba(255,255,255,.72); font-weight: 800; }
+.calendar-lite .active { color: #fff; background: var(--accent); border-color: var(--accent); }
+.feature-table-row.four { grid-template-columns: minmax(120px, 1fr) 90px 90px minmax(120px, 1fr); }
 @media (max-width: 860px) {
   .function-lab { width: 100%; }
   .function-lab-head, .feature-grid { grid-template-columns: 1fr; display: grid; }
-  .feature-kpis, .feature-table-row { grid-template-columns: 1fr; }
+  .feature-kpis, .feature-table-row, .feature-table-row.four, .feature-mini-grid, .feature-trio { grid-template-columns: 1fr; }
 }
 /* functional-enhancement-end */
