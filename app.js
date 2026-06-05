@@ -18,7 +18,18 @@ const project = {
     "Linux 實作班：38 台 LXC 已開通",
     "機器學習課：GPU 配額排程完成",
     "資安課程：實驗環境已隔離"
-  ]
+  ],
+  "ui": {
+    "eyebrow": "校園雲端管理",
+    "primaryNav": "資源申請",
+    "capabilityNav": "資源治理",
+    "flowNav": "開課部署",
+    "actionLabel": "批次開通",
+    "capabilityTitle": "雲端資源與治理",
+    "flowTitle": "開課部署步驟",
+    "recordTitle": "近期資源動態",
+    "operationNotice": "已定位到課程資源申請區，可建立 VM/LXC 與網路配置。"
+  }
 };
 
 const canvas = document.getElementById("visualCanvas");
@@ -198,7 +209,7 @@ function showNotice(action) {
   const notice = document.getElementById("notice");
   if (!notice) return;
   const map = {
-    operate: "操作中心已就緒，所有作業皆可處理。",
+    operate: project.ui?.operationNotice || "已定位到主要工作區。",
     deploy: "課程資源批次已建立。",
     audit: "課後統一診斷已完成。",
     start: "低衝擊訓練已開始。",

@@ -9,8 +9,8 @@
   </head>
   <body class="layout-infra" style="--accent:#22c55e;--accent2:#38bdf8;--dark:#07111f;--soft:#eaf7f0">
     <main class="site">
-      <aside class="infra-rail"><div class="brand"><span class="mark">SK</span><div><strong>SkyLab</strong><div>校園雲端控制台</div></div></div><nav class="navline"><a class="ghost" href="#functionLab">操作中心</a><a class="ghost" href="#outcomes">服務能力</a><a class="ghost" href="#workflow">作業隊列</a></nav><div class="feature-list"><article class="module">課程資源池</article><article class="module">VM/LXC 佈署</article><article class="module">AI 推論配額</article><article class="module">Gateway / DNS</article><article class="module">批次診斷</article><article class="module">稽核紀錄</article></div><div class="module"><strong>完整權限</strong><p>免登入，學生、教師、管理者作業集中處理。</p></div></aside>
-      <section class="infra-main"><p class="eyebrow">115501 作業系統</p><h1>SkyLab 校園雲端實驗室營運平台</h1><p class="muted">把 VM、LXC、課程排程、AI 推論與校園網路治理整合成一個教學雲控制台。</p><section class="metric-grid">
+      <aside class="infra-rail"><div class="brand"><span class="mark">SK</span><div><strong>SkyLab</strong><div>校園雲端控制台</div></div></div><nav class="navline"><a class="ghost" href="#functionLab">資源申請</a><a class="ghost" href="#outcomes">資源治理</a><a class="ghost" href="#workflow">開課部署</a></nav><div class="feature-list"><article class="module">課程資源池</article><article class="module">VM/LXC 佈署</article><article class="module">AI 推論配額</article><article class="module">Gateway / DNS</article><article class="module">批次診斷</article><article class="module">稽核紀錄</article></div><div class="module"><strong>課程資源一站派發</strong><p>課程、資源與網路管理集中在同一個工作台。</p></div></aside>
+      <section class="infra-main"><p class="eyebrow">115501 校園雲端管理</p><h1>SkyLab 校園雲端實驗室營運平台</h1><p class="muted">把 VM、LXC、課程排程、AI 推論與校園網路治理整合成一個教學雲控制台。</p><section class="metric-grid">
     <article class="metric"><span>運算節點</span><strong>24</strong><small>Proxmox 叢集</small></article>
     <article class="metric"><span>課程模板</span><strong>18</strong><small>一鍵開課</small></article>
     <article class="metric"><span>AI 工作負載</span><strong>42</strong><small>vLLM / API</small></article>
@@ -23,15 +23,14 @@
     <section class="function-lab" id="functionLab">
       <div class="function-lab-head">
         <div>
-          <p class="eyebrow">操作中心</p>
-          <h2>核心作業</h2>
+          <p class="eyebrow">課程雲端資源</p>
+          <h2>資源申請與診斷</h2>
         </div>
-        <span class="chip">完整權限</span>
       </div>
       <div id="featureApp"></div>
     </section>
     <!-- functional-enhancement-end -->
-<div class="infra-hero" style="margin-top:18px"><section class="panel" id="outcomes"><div class="section-head"><h2>服務能力</h2><span class="chip">啟用中</span></div><div class="feature-list"><article class="record"><strong>集中管理校園 VM、LXC、網路、DNS 與課程資源，降低日常維運負擔。</strong><small class="muted">目前已納入產品能力。</small></article><article class="record"><strong>以排程、配額與閒置回收提升伺服器使用率，減少不必要耗能。</strong><small class="muted">目前已納入產品能力。</small></article><article class="record"><strong>支援批次開通、課程綁定、時間窗開放與課後回收等教學場景。</strong><small class="muted">目前已納入產品能力。</small></article><article class="record"><strong>整合自架 LLM 與 API 配額管理，讓 AI 課程能在受控環境中運作。</strong><small class="muted">目前已納入產品能力。</small></article></div></section><section class="panel" id="workflow"><div class="section-head"><h2>作業隊列</h2><span class="chip">標準作業</span></div><div class="feature-list"><article class="record"><strong>1. 建立課程模板</strong><small class="muted">標準作業節點。</small></article><article class="record"><strong>2. 批次派發 VM/LXC</strong><small class="muted">標準作業節點。</small></article><article class="record"><strong>3. 套用網路與時間窗</strong><small class="muted">標準作業節點。</small></article><article class="record"><strong>4. 啟用 AI 配額</strong><small class="muted">標準作業節點。</small></article><article class="record"><strong>5. 課後統一診斷</strong><small class="muted">標準作業節點。</small></article></div></section></div><section class="panel"><div class="section-head"><h2>作業紀錄</h2><span class="chip">系統紀錄</span></div><div class="feature-list"><article class="record"><strong>1. Linux 實作班：38 台 LXC 已開通</strong><small class="muted">已寫入作業紀錄。</small></article><article class="record"><strong>2. 機器學習課：GPU 配額排程完成</strong><small class="muted">已寫入作業紀錄。</small></article><article class="record"><strong>3. 資安課程：實驗環境已隔離</strong><small class="muted">已寫入作業紀錄。</small></article></div><p class="notice" id="notice"></p></section></section></main>
+<div class="infra-hero" style="margin-top:18px"><section class="panel" id="outcomes"><div class="section-head"><h2>雲端資源與治理</h2></div><div class="feature-list"><article class="record"><strong>集中管理校園 VM、LXC、網路、DNS 與課程資源，降低日常維運負擔。</strong></article><article class="record"><strong>以排程、配額與閒置回收提升伺服器使用率，減少不必要耗能。</strong></article><article class="record"><strong>支援批次開通、課程綁定、時間窗開放與課後回收等教學場景。</strong></article><article class="record"><strong>整合自架 LLM 與 API 配額管理，讓 AI 課程能在受控環境中運作。</strong></article></div></section><section class="panel" id="workflow"><div class="section-head"><h2>開課部署步驟</h2></div><div class="feature-list"><article class="record"><strong>1. 建立課程模板</strong></article><article class="record"><strong>2. 批次派發 VM/LXC</strong></article><article class="record"><strong>3. 套用網路與時間窗</strong></article><article class="record"><strong>4. 啟用 AI 配額</strong></article><article class="record"><strong>5. 課後統一診斷</strong></article></div></section></div><section class="panel"><div class="section-head"><h2>近期資源動態</h2></div><div class="feature-list"><article class="record"><strong>1. Linux 實作班：38 台 LXC 已開通</strong></article><article class="record"><strong>2. 機器學習課：GPU 配額排程完成</strong></article><article class="record"><strong>3. 資安課程：實驗環境已隔離</strong></article></div><p class="notice" id="notice"></p></section></section></main>
     <script src="app.js"></script>
   </body>
 </html>
